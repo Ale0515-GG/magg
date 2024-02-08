@@ -1,0 +1,64 @@
+<form [formGroup]="loginFormRegister">
+    <p-card header="Ingresar" [style]="{width: '400px'}">
+
+        <div class="field">
+            <label for="nombre">Nombre Completo</label>
+            <input 
+            type="text" 
+            pInputText 
+            class="w-full"
+            placeholder="Ingresar Email"
+            formControlName="email"
+            />
+        </div>
+
+        <div class="field">
+            <label for="email">Correo electronico</label>
+            <input 
+            type="text" 
+            pInputText 
+            class="w-full"
+            placeholder="Ingresar Email"
+            formControlName="email"
+            />
+        </div>
+
+        <small *ngIf="email.invalid && (email.dirty || email.touched)" class="block p-error">
+            <div *ngIf="email.hasError('required')">Se requiere Email</div>
+            <div *ngIf="email.hasError('email')">Correo Incorrecto</div>
+        </small>
+
+        <div class="field">
+            <label for="password">Constrasena</label>
+            <p-password 
+                [toggleMask]="true"
+                formControlName="password">
+            </p-password>   
+        </div>
+        <small *ngIf="password.invalid && (password.dirty || password.touched)"class="block p-error">
+            <div *ngIf="password.hasError('required')">Se requiere Email</div>
+        </small>
+
+        <div class="field">
+            <label for="passwordConfimacion">Confirmar Constrasena</label>
+            <p-password 
+                [toggleMask]="true"
+                formControlName="password">
+            </p-password>   
+        </div>
+        <small *ngIf="password.invalid && (password.dirty || password.touched)"class="block p-error">
+            <div *ngIf="password.hasError('required')">Se requiere Email</div>
+        </small>
+
+        <p-button 
+        label="Ingresar"
+        styleClass="w-full"
+        [disabled]="loginFormRegister.invalid"
+        ></p-button>
+
+        <div class="mt-2">
+            ¿Ya tienes cuenta? <a routerLink="/login">Ingresar</a>
+        </div>
+
+    </p-card>
+</form>
